@@ -20,8 +20,15 @@ async function redirectToMainUrl(req, res) {
         return res.status(404).render("error", { errorMsg: "Short URL not found!" });
     }
 
-    res.redirect(entry.redirectUrl);
+    let redirectUrl = entry.redirectUrl;
+    // ensure protocol
+    if (!redirectUrl.startsWith("http://") && !redirectUrl.startsWith("https://")) {
+        redirectUrl = "https://" + redirectUrl;
+    }
+
+    res.redirect(redirectUrl);
 }
+
 
 async function generateNewshortID(req, res) {
 
