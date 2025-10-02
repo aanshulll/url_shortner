@@ -21,7 +21,7 @@ async function Redirect(req, res) {
 }
 async function login(req,res) {
 
-    res.redirect("/login")
+    res.render("login", { id: null, URLs: [] })
 }
 async function VerifiyUser(req,res) {
     const { email, password } = req.body;

@@ -3,22 +3,19 @@ const { getUser } = require("../util/auth")
 
 
 async function isAuthenticated(req, res, next) {
-    const userid = req.cookies.sessionID
+    const userid = req.cookies.sessionID;
     if (!userid) {
-        return res.redirect("/login")
+        return res.redirect("/login");
     }
-    const user = getUser(userid)
+    const user = getUser(userid);
     if (!user) {
-        return res.redirect("/login")
-
+        res.clearCookie("sessionID"); // 🔑 prevent infinite loop
+        return res.redirect("/login");
     }
-    else {
-        req.user = user;
-
-    }
+    req.user = user;
     next();
-
 }
+
 
 async function checkAuth(req, res, next) {
     const userid = req.cookies.sessionID

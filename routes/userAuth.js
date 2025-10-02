@@ -14,7 +14,7 @@ router.post("/login", VerifiyUser);
 
 // (get)
 // Sign up User
-router.get("/sighup", Redirect);
+router.get("/signUp", Redirect);
 // Log In
 router.get("/login", login)
 module.exports = router;

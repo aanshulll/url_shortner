@@ -21,7 +21,7 @@ app.use(cookieParser())
 ConnectDB(process.env.MONGO_URL);
 
 //routes
-app.use("/", checkAuth,users);
+app.use("/",checkAuth,users);
 app.use("/url",isAuthenticated, Event);
 app.use("/",checkAuth,home )
 
