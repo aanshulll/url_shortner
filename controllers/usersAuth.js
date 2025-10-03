@@ -1,6 +1,5 @@
 newUrl = require("../models/event");
 const AllUsers = require("../models/users");
-const  { v4 : uuidv4 } =  require("uuid");
 const { setUser, getUser } = require("../util/auth");
 
 
@@ -28,12 +27,11 @@ async function VerifiyUser(req,res) {
     const user = await AllUsers.findOne({ email, password });
     // optional
     let allurl = await newUrl.find({createdBy: user._id});
-    console.log(allurl);
+    console.log(user);
     
     if (user) {
-        const sessionID = uuidv4();
-        setUser(sessionID, user);
-        res.cookie("sessionID", sessionID, { httpOnly: true });
+       const token = setUser(user._id, user.email);
+        res.cookie("sessionID", token, { httpOnly: true });
     res.redirect("/");
 
     } else {

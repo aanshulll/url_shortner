@@ -5,7 +5,7 @@ const { getUser } = require("../util/auth")
 async function isAuthenticated(req, res, next) {
     const userid = req.cookies.sessionID;
     if (!userid) {
-        return res.redirect("/sighup");
+        return res.redirect("/signUp");
     }
     const user = getUser(userid);
     if (!user) {
