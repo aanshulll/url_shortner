@@ -26,7 +26,6 @@ async function VerifiyUser(req,res) {
     const { email, password } = req.body;
     const user = await AllUsers.findOne({ email, password });
     // optional
-    let allurl = await newUrl.find({createdBy: user._id});
     console.log(user);
     
     if (user) {
@@ -35,7 +34,8 @@ async function VerifiyUser(req,res) {
     res.redirect("/");
 
     } else {
-        res.send("Invalid credentials");
+        res.render("error", { errorMsg: "Invalid credentials" });
+
     }
     
 }
