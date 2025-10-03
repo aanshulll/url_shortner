@@ -23,14 +23,13 @@ It also tracks visits so you can see when your links are being used.
 
 ---
 
-## 📂 Folder Structure
 url-shortener/
-│-- models/ # URL schema with Mongoose
-│-- routes/ # App routes
-│-- middleware/  # authentication purpose
-│-- utils/  # JWT functions
-│-- server.js # Entry point
-│-- views/ # EJS templates (frontend)
-│-- .env 
-│-- connection.js # DB configuration
-│-- server.js # Entry point
+├── models/ # URL schema with Mongoose
+├── routes/ # App routes
+├── middleware/ # Authentication middleware
+├── utils/ # JWT functions
+├── views/ # EJS templates (frontend)
+├── public/ # Static files (CSS, JS)
+├── connection.js # DB configuration
+├── server.js # Entry point
+└── .env # Environment variables
